@@ -1,10 +1,11 @@
 from django.contrib import admin
-from django.urls import path
-from movie import views as MovieViews
+from django.conf.urls.static import static
+from django.conf import settings
+from django.urls import path, include
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', MovieViews.home, name='home'),
-    path('about/', MovieViews.about, name='about'),
-    path('signup/', movieViews.signup, name='signup'),
-]
+    path('', include('movie.urls')),
+    path('news/', include('news.urls')),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
