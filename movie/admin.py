@@ -8,3 +8,4 @@ class MovieAdmin(admin.ModelAdmin):
     ordering = ('-year', 'title')
     
 admin.site.register(models.Movie, MovieAdmin)
+admin.site.register(models.Review)
